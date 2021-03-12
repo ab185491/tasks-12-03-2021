@@ -39,4 +39,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Name of the current branch
-        run: echo "Current branch is {{env:$GITHUB_REF}}"
+        run: echo "Current branch is ${env:GITHUB_REF}"
