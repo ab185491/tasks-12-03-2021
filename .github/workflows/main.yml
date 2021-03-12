@@ -39,4 +39,6 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Name of the current branch
-        run: echo "Current branch is ${env:GITHUB_REF#refs/heads/}"
+        run: |
+          $BRANCH = Split-Path ${env:GITHUB_REF} -leaf
+          echo "Current branch is $BRANCH"
