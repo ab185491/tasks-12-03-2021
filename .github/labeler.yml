@@ -2,3 +2,7 @@
 repo:
   - ./**
   
+build:
+- any: ['build/**']
+
+  
