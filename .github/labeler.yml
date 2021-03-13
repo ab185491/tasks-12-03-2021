@@ -1,6 +1,6 @@
 # Add 'repo' label to any root file changes
 workflow:
-- any: ['.github/workflows/*']
+  - any: ['.github/workflows/*']
 
 build:
 - any: ['build/**']
