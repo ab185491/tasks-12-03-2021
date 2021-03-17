@@ -50,7 +50,7 @@ jobs:
         run: |
           $BRANCH = ${env:GITHUB_REF}
           echo "Current branch is $BRANCH"
-          if($BRANCH -like "ref/head/release*")
+          if($BRANCH -like "refs/heads/release*")
           {
             echo "Starts with release"
           }
