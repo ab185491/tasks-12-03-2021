@@ -42,3 +42,20 @@ jobs:
         run: |
           $BRANCH = Split-Path ${env:GITHUB_REF} -leaf
           echo "Current branch is $BRANCH"
+          
+      - name: Setting the commit output
+        shell: cmd
+        id: commit-message-generator
+        run: |
+          python test.py > temp.txt
+          set /p OUTPUT=<temp.txt
+          del temp.txt
+          echo ::set-output name=COMMIT_MESSAGE::%OUTPUT%
+          
+      - name: Getting the commit message
+        shell: cmd
+        run: |
+          echo The Commit message is ${{ steps.commit-message-generator.outputs.COMMIT_MESSAGE }}
+          
+          
+          
