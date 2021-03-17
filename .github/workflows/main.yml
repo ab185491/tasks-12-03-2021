@@ -40,8 +40,24 @@ jobs:
       # Runs a single command using the runners shell
       - name: Name of the current branch
         run: |
-          $BRANCH = Split-Path ${env:GITHUB_REF} -leaf
+          $BRANCH_FULL = ${env:GITHUB_REF}
+          $BRANCH_LIST = $BRANCH_FULL.split("/")
+          $BRANCH_LIST = $BRANCH_LIST[2..$BRANCH_LIST.length]
+          $ofs = "/"
+          $BRANCH = [STRING]$BRANCH_LIST
           echo "Current branch is $BRANCH"
+      - name: Check whether the branch starts with release or not
+        run: |
+          $BRANCH = ${env:GITHUB_REF}
+          echo "Current branch is $BRANCH"
+          if($BRANCH -like "refs/heads/release*")
+          {
+            echo "Starts with release"
+          }
+          else
+          {
+            echo "Do not starts with release"
+          }
           
       - name: Setting the commit output
         shell: cmd
