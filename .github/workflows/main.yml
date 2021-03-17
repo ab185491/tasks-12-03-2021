@@ -48,9 +48,9 @@ jobs:
           echo "Current branch is $BRANCH"
       - name: Check whether the branch starts with release or not
         run: |
-          $BRANCH_FULL = ${env:GITHUB_REF}
+          $BRANCH = ${env:GITHUB_REF}
           echo "Current branch is $BRANCH"
-          if($branch -like "ref/head/release*")
+          if($BRANCH -like "ref/head/release*")
           {
             echo "Starts with release"
           }
